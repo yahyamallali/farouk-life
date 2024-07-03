@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Farouk Life</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;400;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+   
+    <!-- Custom CSS -->
+    <style>
+        
+    /* Style for WebKit (Chrome, Safari) scrollbar */
+    ::-webkit-scrollbar {
+      width: 10px; /* Set width of the scrollbar */
+      background-color: #000000; /* Background color of the scrollbar */
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: #000000; /* Color of the track (area behind the scrollbar) */
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: #888; /* Color of the scrollbar thumb */
+      border-radius: 5px; /* Rounded corners of the thumb */
+    }
+
+    /* Optional: Hover effect for the scrollbar thumb */
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: #555; /* Darker color when hovering */
+    }
+        body {
+            text-decoration: none;
+            height: 200vh;
+            overflow-x: hidden; /* Prevent horizontal scrollbar */
+
+            min-height: 100%; /* Sets minimum height of body to 100% of viewport height */
+            background-color: #121212;
+            color: #f0f0f0;
+            font-family: "Nunito", sans-serif;
+            font-weight: 700;
+         
+            cursor: none; /* Hide default cursor */       
+             margin: 0;
+            padding: 0;
+        }
+      
+
+        .animated-opacity {
+            animation: opacityChange 4s infinite;
+        }
+
+
+        .alert-sm {
+            color: #f0f0f0;
+            padding: auto;
+            font-size: 2.5rem;
+
+            margin-bottom: 5%;
+        }
+
+
+        @media screen and (max-width: 767px) {
+
+            .bt-1 {
+                width: 100%;
+            }
+
+            .bt-2 {
+                width: 100%;
+            }
+            .bt-3 {
+                width: 100%;
+            }
+            .img-3 {
+                width: 15%;
+            }
+            .img-nav {
+                width: 10%;
+                box-shadow: 0px 0px 30px 0px rgb(255, 255, 255); /* Light gray shadow */
+
+            }
+            .container {
+                 flex-direction: column;
+            }
+            .img-fluid {
+                width:90% ; 
+            }
+            .item {
+                width:98% ;
+            }
+}
+
+@media screen and (min-width: 1024px) {
+            .bt-1 {
+                width: 100%;
+
+                    }
+
+            .bt-2 {
+                width: 100%;
+            }
+            .bt-3 {
+                width: 100%;
+
+            }
+            .img-3 {
+                width: 7%;
+            }
+            .img-nav {
+                width: 3%;
+                box-shadow: 0px 0px 30px 0px rgb(194, 194, 194); /* Light gray shadow */
+
+            }
+            .img-fluid {
+
+               width:25% ; 
+
+            }
+            .item {
+                width:25% ;
+            }
+         
+}
+        .bt-1 {
+            border-radius: 40px;
+            padding: 5px;
+            border: solid 1px #2c2c2c;
+            font-weight: 800;
+            background-color: transparent;
+            color: aliceblue;
+            font-family: "Nunito", sans-serif;
+            font-weight: 900;
+            box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 1); /* Light gray shadow */
+
+        }
+        .bt-2 {
+       
+            border-radius: 40px;
+            padding: 5px;
+            border: solid 2px #2c2c2c;
+            font-weight: 800;
+            background-color: transparent;
+            color: aliceblue;
+            font-family: "Nunito", sans-serif;
+            position: relative;
+            box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 1); /* Light gray shadow */
+
+    
+        }
+        .bt-3 {
+       
+       border-radius: 40px;
+       padding: 5px;
+       border: solid 2px #2c2c2c;
+       font-weight: 800;
+       background-color: transparent;
+       color: aliceblue;
+       font-family: "Nunito", sans-serif;
+       position: relative;
+       box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, 1); /* Light gray shadow */
+
+
+   }
+
+
+
+        .child {
+            margin: 0 10px;
+        }
+
+        .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+        }
+
+        .custom-cursor::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: cursorTrail 0.8s infinite linear;
+            z-index: -1;
+        }
+
+        @keyframes opacityChange {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes cursorTrail {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2);
+                opacity: 0;
+            }
+        }
+                .custom-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px; /* Adjust size of cursor */
+            height: 40px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .dot {
+            font-size: 94px; /* Adjust size of dot */
+            fill: rgba(255, 255, 255, 0.5); /* Transparent white */
+            filter: url(#blurFilter); /* Apply SVG blur filter */
+            dominant-baseline: middle; /* Align vertically */
+            text-anchor: middle; /* Align horizontally */
+        }
+
+        @keyframes opacityChange {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        .bubble {
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+        }
+
+        .bubble circle {
+            fill: rgba(255, 255, 255, 0.5); /* Transparent white */
+            filter: url(#blurFilter); /* Apply SVG blur filter */
+        }
+
+        @keyframes scale {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+        .cnt {
+            display: flex;
+            
+            align-self: center;
+            justify-self: center;
+
+            height: 100vh; /* Full viewport height */
+        }
+        #background-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20%;
+            z-index: -1; /* Ensure the image is behind other content */
+            pointer-events: none; /* Allows clicks to pass through the image */
+            max-width: 100%; /* Ensure the image does not exceed its container */
+            border-radius: 10px;
+            opacity: 0.6;
+                }
+                .carousel-item {
+                    width: 100%;
+                    
+      transition: transform 4s ease; /* Adjust the duration and timing function as needed */
+    }
+
+
+
+
+
+    
+nav ul {
+    font-size: 190%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0e0e0e;
+    list-style: none;
+    border-radius: 56px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+nav ul li :hover {
+    color: #b20000;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 1em;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+.item {
+
+    height: auto;
+    text-align: center;
+ 
+    display: inline-block;
+    text-shadow: 5px 5px 15px rgba(10, 119, 43, 0.89);
+
+}
+
+
+.hoodie-img {
+    border-radius: 20px;
+}
+.hoodie-img:hover {
+    scale: (1.2);
+}
+
+
+
+@keyframes scaleAnimation {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+.hoodie-container {
+    display: flex;
+    flex-wrap: wrap;
+   
+    width: 100%;
+}
+.t-shirt-container {
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+
+}
+.t-h h2 {
+    text-shadow: 5px 5px 15px rgb(170,170,169);
+}
+
+.collapse-horizontal {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 3s ease-in-out; /* Adjust timing and easing as needed */
+}
+
+/* Show the collapsible content */
+.collapse-horizontal.show {
+    max-height: 900px; /* Set to a value larger than your content's height */
+}
+.card-body {
+    background-color: transparent;
+    width: 100%;
+    transition: max-height 3s ease-in-out; /* Adjust timing and easing as needed */
+
+}
+.btn {
+    transition: max-height 3s ease-in-out; /* Adjust timing and easing as needed */
+
+}
+.hidden {
+      display: none;
+    }
+
+
+    /*new css for the  colore changing */
+    .hidden {
+      display: none;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .button-container button {
+      margin: 0 10px;
+    }
+    .hoodie-img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+    .h {
+      display: none;
+    }
+    </style>
+</head>
+<body style="cursor: none;" >
+        
+    
+ <nav style="height: 100px;" >
+    <ul>
+        <li><a href="#hoodies">HOODIES</a></li>
+        <li><a href="#tshirts">T-SHIRTS</a></li>
+        <li><a href="#hats">HATS</a></li>
+        <li><a href="#stickers">STICKERS</a></li>
+    </ul>
+    <a href="/index.html">    <img src="/STORE/storeicon/Menu-main.png" alt="Discord Icon" style="width: 70px;margin: 40px;">
+    </a>
+
+ </nav>
+ <div class="container" style="align-items: center; justify-content: center; text-align: center;">
+        
+    <div class="alert-sm animated-opacity" role="alert" style="display: flex;align-items: end;justify-content: end;margin-bottom: 0px;" bis_skin_checked="1">
+        <button type="button" class="btn position-relative m-3" style=" border: px solid rgb(255, 255, 255);border-radius: 20px; font-weight: 700; color: #f0f0f0;font-size: 90%;">
+       
+
+        </button>
+    </div>
+    <div class="alert-sm animated-opacity" role="alert" style="
+    margin-bottom: 2px;
+" bis_skin_checked="1">
+       
+    </div>
+</div>
+  <!--  choose colore first -->
+ 
+<div class="button-container">
+    <button id="wh1" class="btn">
+        <span style="font-weight: 900;font-size: 20px;" >WHITE   LOGO 
+        </span>      <img src="/STORE/storeicon/LOGO WHITE.png" alt="" style="margin-left: 10px;" >
+    </button>
+    <button id="bl2" class="btn"  >
+        <span style="font-weight: 900;font-size: 20px;" > BLACK   LOGO 
+        </span>
+<img src="/STORE/storeicon/LOGO BLACK.png" alt="">
+</button>
+
+
+
+    <!-- Add more buttons here for additional colors if needed -->
+  </div>
+  
+  <!-- Content section for ORANG color -->
+  <div id="white1" class="content hidden">
+    white
+  </div>
+  
+  <!-- Content section for Another Color (initially hidden) -->
+  <div id="black2" class="content hidden">
+    
+<div class="button-container"  >
+    <button id="toggleButton1" class="btn" style="background-color: #828282;width: 5%;height: 40px;">
+   </button>
+  
+  
+    <button id="toggleButton2" class="btn" style="background-color: #ca5e1a;width: 5%;height: 40px;">
+      
+    </button>
+  
+  
+    <button id="toggleButton3" class="btn" style="background-color: #b20000;width: 5%;height: 40px;">
+  </button>
+    <!-- Add more buttons here for additional colors if needed -->
+  </div>
+  
+  <!-- Content section for ORANG color -->
+  <div id="content1" class="content">
+    <main style="display: flex; flex-wrap: wrap; gap: 1em;">
+      <section id="hoodie1" style="border: px solid rgb(97, 97, 97); padding: 1%; border-radius: 25px; width: 100%; box-sizing: border-box;">
+        <span style="display: flex; font-weight: 700; justify-content: center;" class="t-h">
+          <a href="Hoodie.html" style="text-decoration: none; color: whitesmoke;"></a>
+        </span>
+        <div class="hoodie-container" style="width: 100%; border: px solid rgb(51, 51, 51); border-radius: 50px;align-items: center;justify-content: center;">
+          <a href="7.html"></a>
+
+
+          <div class="item" style="border:1px solid rgb(85, 85, 85); border-radius: 40px; font-weight: 800; font-size: 20px;align-items: center;justify-content: center;">
+            <img src="" alt="" class="hoodie-img">
+
+            <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="/STORE/Storeimg/7.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/STORE/Storeimg/8.png" class="d-block w-100" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="/STORE/Storeimg/10.png" class="d-block w-100" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+
+          </div>
+
+
+
+
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- Content section for Another Color (initially hidden) -->
+  <div id="content2" class="content hidden">
+    <main style="display: flex; flex-wrap: wrap; gap: 1em;">
+      <section id="hoodie2" style="border: px solid rgb(97, 97, 97); padding: 1%; border-radius: 25px; width: 100%; box-sizing: border-box;">
+        <span style="display: flex; font-weight: 700; justify-content: center;" class="t-h">
+          <a href="Hoodie.html" style="text-decoration: none; color: whitesmoke;"></a>
+        </span>
+        <div class="hoodie-container" style="width: 100%; border: px solid rgb(51, 51, 51); border-radius: 50px;">
+          <a href="7.html"></a>
+          <div class="item" style="border: 1px solid rgb(85, 85, 85); border-radius: 40px; font-weight: 800; font-size: 20px;">
+            <img src="/STORE/Storeimg/8.png" alt="" class="hoodie-img">
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  
+  <!-- Content section for Another Color 3 (initially hidden) -->
+  <div id="content3" class="content hidden" style="display: flex; align-items: center; justify-content: center; height: 100vh;">
+    <main style="display: flex; flex-wrap: wrap; gap: 1em; width: 80%; align-self: center;">
+        <section id="hoodie3" style="border: px solid rgb(97, 97, 97); padding: 1%; border-radius: 25px; width: 100%; box-sizing: border-box;">
+            <span style="display: flex; font-weight: 700; justify-content: center;" class="t-h">
+                <a href="Hoodie.html" style="text-decoration: none; color: whitesmoke;"></a>
+            </span>
+
+            <div class="hoodie-container" style="display: flex; align-items: center; gap: 1em;">
+                <div class="item" style="border: 1px solid rgb(85, 85, 85); border-radius: 40px; font-weight: 800; font-size: 20px;margin-left: 4%;">
+                    <img src="/STORE/Storeimg/13.png" alt="Hoodie Image" class="hoodie-img" style="width: 100%; border-radius: 40px;">
+                </div>
+               
+                <img src="/STORE/Storeimg/13 banner.png" alt="Banner Image" class="hoodie-img" style="width: 40%; max-width: 100%; height: auto; border-radius: 40px;">
+                
+                <div class="item" style="border: px solid rgb(85, 85, 85); border-radius: 40px; font-weight: 800; font-size: 20px;">
+                    <img src="/STORE/Storeimg/5.png" alt="Hoodie Image" class="hoodie-img" style="width: 100%; border-radius: 40px;">
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+  
+  </div>
+  
+  <!-- Content section for Another Color 2 (initially hidden) -->
+  
+  <!-- JavaScript for toggling content -->
+  <script>
+    const wh1 = document.getElementById('wh1');
+    const bl2 = document.getElementById('bl2');
+    const white1 = document.getElementById('white1');
+    const black2 = document.getElementById('black2');
+  
+    wh1.addEventListener('click', function() {
+      white1.classList.remove('hidden');
+      black2.classList.add('hidden');
+    });
+  
+    bl2.addEventListener('click', function() {
+      white1.classList.add('hidden');
+      black2.classList.remove('hidden');
+    });
+  </script>
+  
+  
+<!-- color selection  -->
+
+
+<!-- JavaScript for toggling content -->
+<script>
+  const toggleButton1 = document.getElementById('toggleButton1');
+  const toggleButton2 = document.getElementById('toggleButton2');
+  const toggleButton3 = document.getElementById('toggleButton3');
+
+  const content1 = document.getElementById('content1');
+  const content2 = document.getElementById('content2');
+  const content3 = document.getElementById('content3');
+  const content4 = document.getElementById('content4');
+
+
+  toggleButton1.addEventListener('click', function() {
+    content1.classList.remove('hidden');
+    content2.classList.add('hidden');
+    content3.classList.add('hidden');
+    content4.classList.add('hidden');
+  }
+);
+
+  toggleButton2.addEventListener('click', function() {
+    content1.classList.add('hidden');
+    content2.classList.remove('hidden');
+    content3.classList.add('hidden');
+    content4.classList.add('hidden');
+
+  }
+  );
+  toggleButton3.addEventListener('click', function() {
+    content1.classList.add('hidden');
+    content2.classList.add('hidden');
+    content3.classList.remove('hidden');
+    content4.classList.add('hidden');
+
+  }
+  );
+</script>
+
+</body>
+</html>
+
+  
+<!-- second blue  -->
+ 
+
+
+<!--  
+  <div class="container" style="display: flex ; justify-content: center; align-items: center;">
+      <div class="child">
+        <button class="bt-1" style=" margin-top: 20px; height: 100px; font-size: 25px; padding: 20px;">
+            <img src="/iconweb/Giff.gif" alt="" style=" border-radius: 25px;">
+              Discord [ Jehd Team ]
+          </button>
+      </div>
+
+
+      <div class="child" style="position: relative;">
+        <button class="bt-2" style=" margin-top: 20px; ; height: 100px; font-size: 25px;padding: 20px; ">
+            <lord-icon
+                src="https://cdn.lordicon.com/uofkbuoq.json"
+                trigger="morph"
+                state="morph-circle"
+                style="width: 50px; height: 50px; display: inline-block; vertical-align: middle;">
+            </lord-icon>
+            <span style="margin-left: 30px;">
+                Farouk Life [1.5 M ] 
+            </span>        <img src=" " alt="">
+        
+        </button>
+      
+    </div>
+       
+    <div class="child" style="position: relative;align-items: center;justify-content: center;display: flex;">
+        <button class="bt-3" style=" margin-top: 20px;  height: 100px; font-size: 25px; ">
+            <img class="img-3" src="/iconweb/tiktokicn.gif" alt=""  >
+            <span style="margin-left: 30px;">
+                @farouk_life  
+            </span>        <img src=" " alt="">  </button>
+      
+    </div>
+      
+  </div>
+   -->
+   
+
+
+  <!-- Custom cursor element -->
+  <svg class="custom-cursor" viewBox="0 0 100 100">
+      <defs>
+          <filter id="blurFilter" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+          </filter>
+      </defs>
+      <text class="dot" x="50%" y="50%">.</text>
+  </svg>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom Cursor JavaScript -->
+  <script>
+      const cursor = document.querySelector('.custom-cursor');
+
+      document.addEventListener('mousemove', (e) => {
+          cursor.style.top = `${e.clientY}px`;
+          cursor.style.left = `${e.clientX}px`;
+      });
+  </script>
+  <script>
+    // Initialize the carousel manually to control cycling
+    var myCarousel = document.querySelector('#carouselExampleFade');
+    var carousel = new bootstrap.Carousel(myCarousel);
+
+    // Start carousel sliding automatically after page load
+    setInterval(function() {
+      carousel.next();
+    }, 3000); // Adjust interval as needed (1000 = 1 second)
+  </script>
+
+
+
+
+</body>
+<footer>
+    <p>&copy; 2024 Simple Shop</p>
+</footer>
+</html>

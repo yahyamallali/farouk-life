@@ -1,0 +1,42 @@
+
+<div class="button-container">
+        <button id="btnblack" class="btn">
+          ORANG
+        </button>
+        <button id="btnwhite" class="btn">
+          Another Color
+        </button>
+        <!-- Add more buttons here for additional colors if needed -->
+      </div>
+      
+      <!-- Content section for ORANG color -->
+      <div id="white2" class="content">
+       3
+      </div>
+      
+      <!-- Content section for Another Color (initially hidden) -->
+      <div id="black1" class="content hidden">
+        2
+      </div>
+      
+      <!-- Content section for Another Color 2 (initially hidden) -->
+      
+      <!-- JavaScript for toggling content -->
+      <script>
+        const toggleButton1 = document.getElementById('toggleButton1');
+        const toggleButton2 = document.getElementById('toggleButton2');
+        const content1 = document.getElementById('content1');
+        const content2 = document.getElementById('content2');
+        const content3 = document.getElementById('content3');
+      
+        btnblack.addEventListener('click', function() {
+          black1.classList.remove('h');
+          white2.classList.add('h');
+          content3.classList.add('h');
+        });
+      
+        btnwhite.addEventListener('click', function() {
+          black1.classList.add('h');
+          white2.classList.remove('h');
+          content3.classList.add('h');
+        });

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoodie Color Toggle</title>
+  <style>
+    .hidden {
+      display: none;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .button-container button {
+      margin: 0 10px;
+    }
+    .hoodie-img {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="button-container">
+  <button id="wh1" class="btn">
+    ORANG
+  </button>
+  <button id="bl2" class="btn">
+    Another Color
+  </button>
+  <!-- Add more buttons here for additional colors if needed -->
+</div>
+
+<!-- Content section for ORANG color -->
+<div id="white1" class="content">
+ white
+</div>
+
+<!-- Content section for Another Color (initially hidden) -->
+<div id="black2" class="content hidden">
+  black
+</div>
+
+<!-- Content section for Another Color 2 (initially hidden) -->
+
+<!-- JavaScript for toggling content -->
+<script>
+  const wh1 = document.getElementById('wh1');
+  const bl2 = document.getElementById('bl2');
+  const content1 = document.getElementById('white1');
+  const content2 = document.getElementById('black2');
+
+  wh1.addEventListener('click', function() {
+    white1.classList.remove('hidden');
+    black2.classList.add('hidden');
+  });
+
+  bl2.addEventListener('click', function() {
+    white1.classList.add('hidden');
+    black2.classList.remove('hidden');
+  });
+</script>
+
+</body>
+</html>

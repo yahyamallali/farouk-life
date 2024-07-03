@@ -1,1 +1,1 @@
-# farouk-life
+# farouk

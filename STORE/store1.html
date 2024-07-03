@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Item Display</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+
+nav ul {
+    background-color: #444;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1em;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+main {
+    padding: 1em;
+}
+
+section {
+    margin-bottom: 2em;
+}
+
+.item {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    display: inline-block;
+    margin: 0.5em;
+    padding: 1em;
+    width: 200px;
+    text-align: center;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shop</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#hoodies">Hoodies</a></li>
+            <li><a href="#tshirts">T-Shirts</a></li>
+            <li><a href="#hats">Hats</a></li>
+            <li><a href="#stickers">Stickers</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="hoodies">
+            <h2>Hoodies</h2>
+            <div class="item">Hoodie 1</div>
+            <div class="item">Hoodie 2</div>
+        </section>
+        <section id="tshirts">
+            <h2>T-Shirts</h2>
+            <div class="item">T-Shirt 1</div>
+            <div class="item">T-Shirt 2</div>
+        </section>
+        <section id="hats">
+            <h2>Hats</h2>
+            <div class="item">Hat 1</div>
+            <div class="item">Hat 2</div>
+        </section>
+        <section id="stickers">
+            <h2>Stickers</h2>
+            <div class="item">Sticker 1</div>
+            <div class="item">Sticker 2</div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Simple Shop</p>
+    </footer>
+</body>
+</html>
